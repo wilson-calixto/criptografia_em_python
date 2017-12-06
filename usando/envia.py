@@ -52,6 +52,18 @@ def send_message(topico,msg):
 
 
 
+def send_message(topico,msg):
+    client = mqtt.Client()
+    # descomente esta linha caso seu servidor possua autenticação.
+    # client.username_pw_set(MQTT_AUTH.user, MQTT_AUTH.pwd)
+    client.connect(MQTT_ADDRESS, MQTT_PORT, MQTT_TIMEOUT)
+    result, mid = client.publish(topico, msg)
+    print('Mensagem enviada ao canal: %d' % mid)
+
+
+
+
+
 
 
 
